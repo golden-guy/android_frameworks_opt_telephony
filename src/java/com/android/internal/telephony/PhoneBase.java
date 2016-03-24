@@ -2205,8 +2205,6 @@ public abstract class PhoneBase extends Handler implements Phone {
         boolean imsUseEnabled =
                 ((ImsManager.isVolteEnabledByPlatform(mContext) &&
                 ImsManager.isEnhanced4gLteModeSettingEnabledByUser(mContext)) ||
-                (ImsManager.isWfcEnabledByPlatform(mContext) &&
-                ImsManager.isWfcEnabledByUser(mContext)) &&
                 ImsManager.isNonTtyOrTtyOnVolteEnabled(mContext));
         return imsUseEnabled;
     }

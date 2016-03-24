@@ -1204,7 +1204,6 @@ public final class ImsPhoneCallTracker extends CallTracker {
             mPhone.onTtyModeReceived(mode);
         }
 
-        @Override
         public void onCallHandover(ImsCall imsCall, int srcAccessTech, int targetAccessTech,
             ImsReasonInfo reasonInfo) {
             if (DBG) {
@@ -1213,7 +1212,6 @@ public final class ImsPhoneCallTracker extends CallTracker {
             }
         }
 
-        @Override
         public void onCallHandoverFailed(ImsCall imsCall, int srcAccessTech, int targetAccessTech,
             ImsReasonInfo reasonInfo) {
             if (DBG) {
@@ -1230,7 +1228,6 @@ public final class ImsPhoneCallTracker extends CallTracker {
          * @param isMultiParty {@code true} if the call became multiparty, {@code false}
          *      otherwise.
          */
-        @Override
         public void onMultipartyStateChanged(ImsCall imsCall, boolean isMultiParty) {
             if (DBG) log("onMultipartyStateChanged to " + (isMultiParty ? "Y" : "N"));
 
@@ -1309,14 +1306,13 @@ public final class ImsPhoneCallTracker extends CallTracker {
      */
     private ImsConnectionStateListener mImsConnectionStateListener =
         new ImsConnectionStateListener() {
-        @Override
+
         public void onImsConnected() {
             if (DBG) log("onImsConnected");
             mPhone.setServiceState(ServiceState.STATE_IN_SERVICE);
             mPhone.setImsRegistered(true);
         }
 
-        @Override
         public void onImsDisconnected(ImsReasonInfo imsReasonInfo) {
             if (DBG) log("onImsDisconnected imsReasonInfo=" + imsReasonInfo);
             mPhone.setServiceState(ServiceState.STATE_OUT_OF_SERVICE);
@@ -1324,7 +1320,6 @@ public final class ImsPhoneCallTracker extends CallTracker {
             mPhone.processDisconnectReason(imsReasonInfo);
         }
 
-        @Override
         public void onImsProgressing() {
             if (DBG) log("onImsProgressing");
         }

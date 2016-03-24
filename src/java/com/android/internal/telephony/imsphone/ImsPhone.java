@@ -483,6 +483,7 @@ public class ImsPhone extends ImsPhoneBase {
 
     public static void checkWfcWifiOnlyModeBeforeDial(ImsPhone imsPhone, Context context)
             throws CallStateException {
+        /*
         if (imsPhone == null ||
                 !imsPhone.isVowifiEnabled()) {
             boolean wfcWiFiOnly = (ImsManager.isWfcEnabledByPlatform(context) &&
@@ -495,6 +496,7 @@ public class ImsPhone extends ImsPhoneBase {
                         "WFC Wi-Fi Only Mode: IMS not registered");
             }
         }
+        */
     }
 
     @Override
@@ -727,7 +729,6 @@ public class ImsPhone extends ImsPhoneBase {
                 ut.updateCallForward(getActionFromCFAction(commandInterfaceCFAction),
                         getConditionFromCFReason(commandInterfaceCFReason),
                         dialingNumber,
-                        serviceClass,
                         timerSeconds,
                         onComplete);
              } catch (ImsException e) {
@@ -764,7 +765,7 @@ public class ImsPhone extends ImsPhoneBase {
 
         try {
             ImsUtInterface ut = mCT.getUtInterface();
-            ut.updateCallWaiting(enable, serviceClass, resp);
+            ut.updateCallWaiting(enable, resp);
         } catch (ImsException e) {
             sendErrorResponse(onComplete, e);
         }
@@ -1406,16 +1407,18 @@ public class ImsPhone extends ImsPhoneBase {
                 }
 
                 // UX requirement is to disable WFC in case of "permanent" registration failures.
-                ImsManager.setWfcSetting(mContext, false);
+                //ImsManager.setWfcSetting(mContext, false);
 
                 // If WfcSettings are active then alert will be shown
                 // otherwise notification will be added.
+                /*
                 Intent intent = new Intent(ImsManager.ACTION_IMS_REGISTRATION_ERROR);
                 intent.putExtra(EXTRA_KEY_ALERT_TITLE, title);
                 intent.putExtra(EXTRA_KEY_ALERT_MESSAGE, messageAlert);
                 intent.putExtra(EXTRA_KEY_NOTIFICATION_MESSAGE, messageNotification);
                 mContext.sendOrderedBroadcast(intent, null, mResultReceiver,
                         null, Activity.RESULT_OK, null, null);
+                */
 
                 // We can only match a single error code
                 // so should break the loop after a successful match.

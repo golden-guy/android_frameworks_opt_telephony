@@ -548,7 +548,7 @@ public class ImsPhoneConnection extends Connection {
         if (mImsCall == null) {
             return false;
         }
-        return mImsCall.isConferenceHost();
+        return true;
     }
 
     /*package*/ ImsCall getImsCall() {
